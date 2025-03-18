@@ -1,5 +1,6 @@
 import axios from "axios";
-import {login} from "./redux/authSlice.js";
+import {useDispatch} from "react-redux";
+import {logoutUser} from "./redux/authThunks.js";
 
 axios.defaults.withCredentials = true;
 export const api = axios.create({
@@ -19,7 +20,9 @@ api.interceptors.response.use(
                 await api.post('refresh_token');
                 return api(originalRequest);
             } catch (refreshError) {
-                console.error('Błąd odświeżania tokenu:', refreshError);
+                const dispatch = useDispatch()
+                dispatch(logoutUser())
+                console.error('Błąd odświeżania tokenu:', refreshError.response?.data);
                 return Promise.reject(refreshError);
             }
         }

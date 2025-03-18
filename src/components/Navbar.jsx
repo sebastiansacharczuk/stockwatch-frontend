@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../redux/authSlice.js";
+import {logoutUser} from "../redux/authThunks.js";
 
 const Navbar = () => {
     const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const Navbar = () => {
                         <Link to="/news" className="mr-4">News</Link>
                         <Link to="/watchlists" className="mr-4">Watchlists</Link>
                         <button
-                            onClick={() => dispatch(logout())}
+                            onClick={() => dispatch(logoutUser())}
                             className="text-red-500"
                         >
                             Logout

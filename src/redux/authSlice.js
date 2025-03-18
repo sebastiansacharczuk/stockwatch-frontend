@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {fetchUserInfo} from "./authThunks.js";
+import {checkAuth, fetchUserInfo, logoutUser} from "./authThunks.js";
 
 const initialState = {
     isAuthenticated: false,
@@ -17,18 +17,6 @@ const authSlice = createSlice({
             state.user = action.payload;
             localStorage.setItem("user", JSON.stringify(action.payload));
         },
-        logout(state) {
-            state.isAuthenticated = false;
-            state.user = null;
-            localStorage.removeItem("user");
-        },
-        checkAuth(state) {
-            const user = localStorage.getItem("user");
-            if (user) {
-                state.isAuthenticated = true;
-                state.user = JSON.parse(user);
-            }
-        },
     },
     extraReducers: (builder) => {
         builder
@@ -45,9 +33,37 @@ const authSlice = createSlice({
                 state.isAuthenticated = false;
                 state.user = null;
                 state.error = action.payload;
+            })
+            .addCase(checkAuth.pending, (state) => {
+                    state.status = 'loading';
+                })
+            .addCase(checkAuth.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                state.isAuthenticated = true;
+                state.user = action.payload;
+                localStorage.setItem("user", JSON.stringify(action.payload)); // Aktualizuje localStorage
+            })
+            .addCase(checkAuth.rejected, (state, action) => {
+                state.status = 'failed';
+                state.isAuthenticated = false;
+                state.user = null;
+                state.error = action.payload;
+            })
+            .addCase(logoutUser.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                state.isAuthenticated = false;
+                state.user = null;
+                localStorage.removeItem("user");
+            })
+            .addCase(logoutUser.rejected, (state, action) => {
+                state.status = 'failed';
+                state.isAuthenticated = false;
+                state.user = null;
+                state.error = action.payload;
+                localStorage.removeItem("user");
             });
     }
 });
 
-export const { login, logout, checkAuth } = authSlice.actions;
+export const { login } = authSlice.actions;
 export default authSlice.reducer;
