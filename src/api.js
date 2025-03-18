@@ -1,4 +1,5 @@
 import axios from "axios";
+import {login} from "./redux/authSlice.js";
 
 axios.defaults.withCredentials = true;
 export const api = axios.create({
