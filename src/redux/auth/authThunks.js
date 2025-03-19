@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {api} from "../api.js";
+import {api} from "../../api.js";
 
 export const logoutUser = createAsyncThunk(
     'auth/logoutUser',

@@ -8,9 +8,8 @@ import News from "./pages/News.jsx";
 import Navbar from "./components/Navbar.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
-import {checkAuth} from "./redux/authThunks.js";
-
-
+import {checkAuth} from "./redux/auth/authThunks.js";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
     const dispatch = useDispatch();

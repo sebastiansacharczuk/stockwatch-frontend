@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {logoutUser} from "../redux/authThunks.js";
+import {logoutUser} from "../redux/auth/authThunks.js";
 
 const Navbar = () => {
     const dispatch = useDispatch();

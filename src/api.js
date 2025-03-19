@@ -1,6 +1,6 @@
 import axios from "axios";
 import {useDispatch} from "react-redux";
-import {logoutUser} from "./redux/authThunks.js";
+import {logoutUser} from "./redux/auth/authThunks.js";
 
 axios.defaults.withCredentials = true;
 export const api = axios.create({
@@ -29,3 +29,17 @@ api.interceptors.response.use(
         return Promise.reject(error);
     }
 );
+
+export const getAllTickers = () => {
+    api.get("ticker_list")
+        .then((response) => {
+            console.log(response.data);
+        })
+        .catch((error) => {
+            console.error("Błąd logowania:", error);
+        });
+};
+
+export const getNews = () => {
+    return api.get("news")
+}

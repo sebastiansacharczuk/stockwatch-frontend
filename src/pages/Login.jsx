@@ -1,7 +1,7 @@
-import { api } from "../api";
+import { api, getAllTickers } from "../api";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { login } from "../redux/authSlice.js";
+import { login } from "../redux/auth/authSlice.js";
 
 function Login() {
     const [username, setUsername] = useState('');
@@ -14,6 +14,7 @@ function Login() {
                 console.log(response.data);
                 // Zakładamy, że response.data zawiera dane użytkownika
                 dispatch(login(response.data));
+                getAllTickers();
             })
             .catch((error) => {
                 // obsługa błędów, np. wyświetlenie komunikatu użytkownikowi
