@@ -43,3 +43,28 @@ export const getAllTickers = () => {
 export const getNews = () => {
     return api.get("news")
 }
+
+export const getAllWatchlists = () => {
+    return api.get("watchlists/all")
+}
+
+export const getWatchlistById = (id) => {
+    return api.get(`watchlists/${id}`)
+}
+
+export const searchTickers = () => {
+    return api.get("search_tickers/")
+}
+
+
+export const createWatchlist = (name) => {
+    api.post("watchlists/create", { name })
+        .then((response) => {
+            console.log(response.data);
+            return response.data.data;
+        })
+        .catch((error) => {
+            console.log(error);
+            return Promise.reject(error);
+        })
+}

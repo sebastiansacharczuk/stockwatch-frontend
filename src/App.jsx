@@ -10,6 +10,7 @@ import {useDispatch, useSelector} from "react-redux";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import {checkAuth} from "./redux/auth/authThunks.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import WatchlistDetails from "./pages/WatchlistDetails.jsx";
 
 function App() {
     const dispatch = useDispatch();
@@ -28,6 +29,7 @@ function App() {
                     <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
                     <Route path="/news" element={<ProtectedRoute><News /></ProtectedRoute>} />
                     <Route path="/watchlists" element={<ProtectedRoute><Watchlists /></ProtectedRoute>} />
+                    <Route path="/watchlist/:id" element={<ProtectedRoute><WatchlistDetails /></ProtectedRoute>} />
                     <Route
                         path="/login"
                         element={isAuthenticated ? <Navigate to="/" /> : <Login />}
