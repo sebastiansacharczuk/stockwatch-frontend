@@ -46,7 +46,7 @@ function Watchlists() {
 
     return (
         <div>
-            <h1 className="text-2xl">Welcome to Watchlists Page</h1>
+            <h1 className="text-2xl">Watchlists</h1>
             <Button variant="primary" onClick={() => {setModalShow(true)}}>+</Button>
             <div className="list-group mb-3">
             {watchlists.length > 0 ? (

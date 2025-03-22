@@ -1,0 +1,4 @@
+1. newsy - api zwraca tickery ktorych dotyczy news i 'insights' z opisem sentymentu co do akcji wnioskowanego na podstawie newsa. Trzeba te informacje wyświetlić.
+2. modale sie same nie zamykaja po submit akcji
+3. popup z informacją o udanych akcja np. logowaniu, utworzeniu watchlist itd
+4. do watchlosty powinny byc dodawany ticker i nazwa firmy

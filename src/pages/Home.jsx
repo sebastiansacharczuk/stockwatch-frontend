@@ -1,4 +1,5 @@
 import {api} from "../api.js";
+import {Button} from "react-bootstrap";
 
 function Home() {
 
@@ -12,7 +13,7 @@ function Home() {
         <div>
             <h1 className="text-2xl">Welcome to Home Page</h1>
             {/* Dodaj przycisk */}
-            <button onClick={handleButtonClick} className="mt-4 p-2 bg-blue-500 text-white rounded hover:bg-blue-600">Kliknij</button>
+            <Button onClick={handleButtonClick}>Click</Button>
         </div>
     );
 }

@@ -11,6 +11,7 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import {checkAuth} from "./redux/auth/authThunks.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import WatchlistDetails from "./pages/WatchlistDetails.jsx";
+import NavComponent from "./components/NavComponent.jsx";
 
 function App() {
     const dispatch = useDispatch();
@@ -18,13 +19,15 @@ function App() {
 
     // Sprawdzenie statusu logowania przy starcie aplikacji
     useEffect(() => {
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
         dispatch(checkAuth());
     }, [dispatch]);
 
     return (
         <Router>
-            <Navbar />
-            <div className="p-6">
+            <NavComponent />
+            {/*<Navbar />*/}
+            <div className="p-6" style={{ paddingTop: "70px" }}>
                 <Routes>
                     <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
                     <Route path="/news" element={<ProtectedRoute><News /></ProtectedRoute>} />

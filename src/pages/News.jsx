@@ -88,34 +88,27 @@ function News() {
 
 
     return (
-        <div className="container mt-4">
-            <h1 className="text-2xl">Welcome to News Page</h1>
+        <div className="container-fluid mt-4 text-center" style={{height: "100vh", width: "100vw"}}>
+            <h1 className="text-2xl">News</h1>
 
-            {/* Lista tytułów */}
             <div className="list-group mb-3">
-                {currentArticles.map(article => (
-
-                    <Button variant="primary" onClick={() => {
-                        setModalShow(true)
-                        setSelectedArticle(article)
-                    }}>
+                {currentArticles.map((article, index) => (
+                    <Button
+                        key={index}
+                        variant="primary"
+                        onClick={() => {
+                            setModalShow(true)
+                            setSelectedArticle(article)
+                        }}
+                        className="mb-2"
+                    >
                         {article.title}
                     </Button>
-
-
-                    // <div
-                    //     key={article.id}
-                    //     className="list-group-item list-group-item-action"
-                    //     onClick={() => openModal(article)}
-                    //     style={{ cursor: 'pointer' }}
-                    // >
-                    //     {article.title}
-                    // </div>
                 ))}
             </div>
 
             {/* Paginacja */}
-            <div className="d-flex justify-content-between align-items-center">
+            <div className="d-flex justify-content-center align-items-center">
                 <Button
                     onClick={handlePrevPage}
                     disabled={currentPage === 1}
@@ -123,7 +116,7 @@ function News() {
                 >
                     Poprzednia
                 </Button>
-                <span>Strona {currentPage} z {totalPages}</span>
+                <span className="mx-3">Strona {currentPage} z {totalPages}</span>
                 <Button
                     onClick={handleNextPage}
                     disabled={currentPage === totalPages}

@@ -52,8 +52,20 @@ export const getWatchlistById = (id) => {
     return api.get(`watchlists/${id}`)
 }
 
-export const searchTickers = () => {
-    return api.get("search_tickers/")
+export const addTickerToWatchlist = (id, ticker) => {
+    return api.post(`watchlists/${id}`, {ticker})
+}
+
+export const searchTickers = (search = '', market = 'stocks', limit = 50, date = '', tickerType = '', active = true) => {
+    return api.get('/search_tickers', {
+        params: {
+            search,
+            market,
+            limit,
+            date,
+            tickerType,
+            active
+        }})
 }
 
 
