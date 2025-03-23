@@ -52,9 +52,26 @@ export const getWatchlistById = (id) => {
     return api.get(`watchlists/${id}`)
 }
 
-export const addTickerToWatchlist = (id, ticker) => {
-    return api.post(`watchlists/${id}`, {ticker})
-}
+export const addTickerToWatchlist = (id, ticker, companyName) => {
+    const truncateName = (name, maxLength = 150) => {
+        if (name.length <= maxLength) {
+            return name;
+        }
+        const substring = name.substring(0, maxLength);
+        const lastIndex = substring.lastIndexOf(",");
+        if (lastIndex !== -1) {
+            return substring.substring(0, lastIndex);
+        } else {
+            return substring;
+        }
+    };
+    const truncatedName = truncateName(companyName);
+
+    return api.post(`watchlists/${id}/add_ticker`, {
+        ticker: ticker,
+        name: truncatedName
+    });
+};
 
 export const searchTickers = (search = '', market = 'stocks', limit = 50, date = '', tickerType = '', active = true) => {
     return api.get('/search_tickers', {
@@ -80,3 +97,19 @@ export const createWatchlist = (name) => {
             return Promise.reject(error);
         })
 }
+
+
+
+export const getTickerDetails = (ticker) => {
+    return api.get('stocks/details', {
+        params: { ticker }
+    })
+        .then((response) => {
+            console.log(response.data);
+            return response.data.data; // Zwracaj dane poprawnie
+        })
+        .catch((error) => {
+            console.error("Błąd pobierania danych:", error);
+            throw error;
+        });
+};

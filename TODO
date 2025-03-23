@@ -2,3 +2,6 @@
 2. modale sie same nie zamykaja po submit akcji
 3. popup z informacją o udanych akcja np. logowaniu, utworzeniu watchlist itd
 4. do watchlosty powinny byc dodawany ticker i nazwa firmy
+5. logo pozyskiwane z api polygon potrzebuje klucza do autoryzacji. potrzebny endpotin na backendzie ktory zwroci svg
+
+offtopic: snapshoty dokumentacji (polygon.io, react-bootstrap)
