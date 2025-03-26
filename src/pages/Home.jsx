@@ -1,12 +1,12 @@
-import {api} from "../api.js";
+import {api, getStockAggregateData} from "../api.js";
 import {Button} from "react-bootstrap";
 
 function Home() {
 
     const handleButtonClick = () => {
-        api.get("user_info").then((r) => {
-            console.log(r.data);
-        });
+        getStockAggregateData("AAPL", 1, "day", "2023-01-09", "2023-02-10")
+            .then((res) => {})
+            .catch((err) => {})
     };
 
     return (

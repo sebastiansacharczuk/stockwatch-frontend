@@ -1,6 +1,7 @@
 import axios from "axios";
 import {useDispatch} from "react-redux";
 import {logoutUser} from "./redux/auth/authThunks.js";
+import {calculateFromTimestamp, currentTimestamp} from "./stockUtils.js";
 
 axios.defaults.withCredentials = true;
 export const api = axios.create({
@@ -96,6 +97,33 @@ export const createWatchlist = (name) => {
             console.log(error);
             return Promise.reject(error);
         })
+}
+
+export const getStockAggregateData = (
+    stockTicker,
+    timeInterval,
+    adjusted = true,
+    sort = 'asc',
+    limit = 5000
+) => {
+    if (!stockTicker || !timeInterval) {
+        throw new Error('Missing required parameters');
+    }
+    const from = calculateFromTimestamp(timeInterval);
+    const to = currentTimestamp;
+
+    return api.get('/stock_aggregate_data', {
+        params: {
+            stockTicker,
+            multiplier: timeInterval.multiplier,
+            timespan: timeInterval.timespan,
+            from,
+            to,
+            adjusted,
+            sort,
+            limit
+        }
+    })
 }
 
 

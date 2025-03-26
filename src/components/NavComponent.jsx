@@ -12,8 +12,8 @@ function NavComponent() {
     return (
         <Navbar
             expand="lg"
-            className="p-4 w-100"
-            fixed="top"
+            className="p-4 w-100 navbar-dark bg-dark"
+            fixed={"top"}
         >
             <Container fluid>
                 <Navbar.Brand as={Link} to="/">StockWatch</Navbar.Brand>

@@ -98,7 +98,7 @@ function WatchlistDetails() {
                 {/* Prawa kolumna – komponent StockOverview */}
                 <div className="flex-grow-1 p-2">
                     {selectedTicker ? (
-                        <StockOverview ticker={selectedTicker.ticker} companyName={selectedTicker.name} />
+                        <StockOverview ticker={selectedTicker.ticker} companyName={selectedTicker.name} watchlist={watchlist} />
                     ) : (
                         <p>Wybierz ticker z listy.</p>
                     )}
