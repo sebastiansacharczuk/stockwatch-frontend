@@ -4,7 +4,7 @@
 const defaultColors = {
     backgroundColor: '#1E1E1E', // Ciemny szary/czarny
     textColor: '#D9D9D9', // Jasny szary dla tekstu
-    lineColor: '#42A5F5', // Jasnoniebieski dla linii
+    lineColor: '#4e42f5', // Jasnoniebieski dla linii
     areaTopColor: '#42A5F5', // Jasnoniebieski dla górnego obszaru
     areaBottomColor: 'rgba(66, 165, 245, 0.28)', // Półprzezroczysty niebieski
     baselineTopLineColor: '#66BB6A', // Zielony dla górnej linii bazowej
@@ -12,34 +12,37 @@ const defaultColors = {
     baselineBottomLineColor: '#EF5350', // Czerwony dla dolnej linii bazowej
     baselineBottomAreaColor: 'rgba(239, 83, 80, 0.28)', // Półprzezroczysty czerwony
     upColor: '#26A69A', // Turkusowy dla rosnących świec/słupków
-    downColor: '#EF5350', // Czerwony dla malejących świec/słupków
-    borderColor: '#757575', // Szary dla obramowania świec/słupków
+    downColor: '#cf130d', // Czerwony dla malejących świec/słupków
+    borderColor: '#000000', // Szary dla obramowania świec/słupków
 };
 
 // Opcje ogólne dla wykresu
 const chartOptions = {
+
     layout: {
         background: { type: 'solid', color: defaultColors.backgroundColor },
         textColor: defaultColors.textColor,
     },
     timeScale: {
+        maxBarSpacing: 10,
         fixLeftEdge: true,
         fixRightEdge: true,
         timeVisible: true,
         secondsVisible: false,
+        shiftVisibleRangeOnNewBar: true,
     },
     priceScale: {
         autoScale: true,
         borderVisible: true,
-        borderColor: '#424242', // Ciemniejszy szary dla obramowania osi
+        borderColor: '#424242',
     },
     grid: {
-        vertLines: { color: 'rgba(255, 255, 255, 0.1)', style: 1 }, // Bardzo subtelny biały
+        vertLines: { color: 'rgba(255, 255, 255, 0.1)', style: 1 },
         horzLines: { color: 'rgba(255, 255, 255, 0.1)', style: 1 },
     },
     crosshair: {
         mode: 0,
-        vertLine: { color: '#B0BEC5', width: 1, style: 1 }, // Jasnoszary dla krzyżowego wskaźnika
+        vertLine: { color: '#B0BEC5', width: 1, style: 1 },
         horzLine: { color: '#B0BEC5', width: 1, style: 1 },
     },
     localization: {
@@ -64,6 +67,10 @@ const seriesOptions = {
         bottomColor: defaultColors.areaBottomColor,
         lineStyle: 0,
         lineWidth: 2,
+        relativeGradient: true
+    },
+    LineSeries: {
+
     },
     BaselineSeries: {
         baseValue: { type: 'price', price: 0 },
@@ -91,6 +98,11 @@ const seriesOptions = {
         openVisible: true,
         thinBars: true,
     },
+    AvgSeries: {
+        color: '#D9D9D9',
+        lineWidth: 3,
+        lineStyle: 2,
+    }
 };
 
 // Eksportowanie konfiguracji

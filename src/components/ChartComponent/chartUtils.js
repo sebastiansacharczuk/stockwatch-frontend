@@ -4,7 +4,6 @@ export const Timespan = Object.freeze({
     DAY: "day",
     WEEK: "week",
     MONTH: "month",
-    YEAR: "year",
 });
 
 export const TimeInterval = Object.freeze({
@@ -15,9 +14,19 @@ export const TimeInterval = Object.freeze({
     D1: { timespan: Timespan.DAY, multiplier: 1 },
     W1: { timespan: Timespan.WEEK, multiplier: 1 },
     MN1: { timespan: Timespan.MONTH, multiplier: 1 },
-    Y1: { timespan: Timespan.YEAR, multiplier: 1 },
 });
 
+export const MultiChartColors = [
+    "red",
+    "green",
+    "blue",
+    "yellow",
+    "purple",
+    "pink",
+    "brown",
+    "orange",
+    "white"
+];
 
 
 export const SeriesType = Object.freeze({
@@ -35,19 +44,22 @@ function calculateFromTimestamp(timeInterval) {
 
     switch (timeInterval.timespan) {
         case Timespan.MINUTE:
-            offsetInSeconds = MILLISECONDS_IN_A_DAY / 6; // 2 hours
+            offsetInSeconds = MILLISECONDS_IN_A_DAY * 4;
             break;
         case Timespan.HOUR:
-            offsetInSeconds = MILLISECONDS_IN_A_DAY * 3; // 60 dni
+            offsetInSeconds = MILLISECONDS_IN_A_DAY * 4 * 60;
             break;
         case Timespan.DAY:
-            offsetInSeconds = MILLISECONDS_IN_A_DAY * 7; // 7 dni
+            offsetInSeconds = MILLISECONDS_IN_A_DAY * 360 * 2;
             break;
         case Timespan.WEEK:
-            offsetInSeconds = MILLISECONDS_IN_A_DAY * 7 * 52; // 1 rok
+            offsetInSeconds = MILLISECONDS_IN_A_DAY * 360 * 7;
             break;
         case Timespan.MONTH:
-            offsetInSeconds = MILLISECONDS_IN_A_DAY * 1800; // 5 lat
+            offsetInSeconds = MILLISECONDS_IN_A_DAY * 360 * 30;
+            break;
+        case Timespan.YEAR:
+            offsetInSeconds = MILLISECONDS_IN_A_DAY * 1800;
             break;
         default:
             throw new Error("Invalid timespan. Use 'day', 'hour', 'week', or 'month'.");

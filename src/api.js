@@ -1,7 +1,7 @@
 import axios from "axios";
 import {useDispatch} from "react-redux";
 import {logoutUser} from "./redux/auth/authThunks.js";
-import {calculateFromTimestamp, currentTimestamp} from "./stockUtils.js";
+import {calculateFromTimestamp, currentTimestamp} from "./components/ChartComponent/chartUtils.js";
 
 axios.defaults.withCredentials = true;
 export const api = axios.create({

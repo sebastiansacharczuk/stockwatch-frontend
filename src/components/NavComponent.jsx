@@ -30,6 +30,7 @@ function NavComponent() {
                                 <Nav.Link as={Link} to="/">Home</Nav.Link>
                                 <Nav.Link as={Link} to="/watchlists">Watchlists</Nav.Link>
                                 <Nav.Link as={Link} to="/news">News</Nav.Link>
+                                <Nav.Link as={Link} to="/test">Test</Nav.Link>
                                 <Nav.Link
                                     as="button"
                                     onClick={() => dispatch(logoutUser())}

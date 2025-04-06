@@ -24,7 +24,7 @@ function App() {
     return (
         <Router>
             <NavComponent />
-            <div className="p-6" style={{ marginTop: 80 }}>
+            <div className="p-6" style={{ marginTop: 80}}>
                 <Routes>
                     <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
                     <Route path="/news" element={<ProtectedRoute><News /></ProtectedRoute>} />

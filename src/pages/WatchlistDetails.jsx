@@ -62,8 +62,8 @@ function WatchlistDetails() {
     }
 
     return (
-        <div className="container-fluid mt-4 ms-auto" style={{ height: "100vh", width: "100vw" }}>
-            <div className="d-flex w-100 vh-100">
+        <div className="container-fluid mt-4 ms-auto" style={{ height: "100%", width: "100%" }}>
+            <div className="d-flex w-100 vh-100 overflow-auto">
                 {/* Lewa kolumna – lista tickerów */}
                 <div className="border-end p-2" style={{ width: "250px" }}>
                     <h2>Tickery</h2>
@@ -98,7 +98,10 @@ function WatchlistDetails() {
                 {/* Prawa kolumna – komponent StockOverview */}
                 <div className="flex-grow-1 p-2">
                     {selectedTicker ? (
-                        <StockOverview ticker={selectedTicker.ticker} companyName={selectedTicker.name} watchlist={watchlist} />
+                        <StockOverview
+                            selectedTicker={selectedTicker.ticker}
+                            companyName={selectedTicker.name}
+                            watchlist={watchlist} />
                     ) : (
                         <p>Wybierz ticker z listy.</p>
                     )}

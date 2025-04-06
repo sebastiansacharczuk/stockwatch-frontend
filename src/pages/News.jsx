@@ -88,7 +88,7 @@ function News() {
 
 
     return (
-        <div className="container-fluid mt-4 text-center" style={{height: "100vh", width: "100vw"}}>
+        <div className="container-fluid mt-4 text-center" style={{height: "100%", width: "100%", overflowY: "auto"}}>
             <h1 className="text-2xl">News</h1>
 
             <div className="list-group mb-3">
